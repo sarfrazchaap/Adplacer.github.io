@@ -1,26 +1,18 @@
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #f4f4f4;
-}
+document.addEventListener("DOMContentLoaded", function () {
+    const grid = document.getElementById("grid");
 
-#grid {
-    display: grid;
-    grid-template-columns: repeat(10, 30px);
-    grid-template-rows: repeat(10, 30px);
-    gap: 2px;
-    margin: 20px auto;
-    width: fit-content;
-}
+    for (let i = 0; i < 2500; i++) {  // 50x50 = 2500 pixels
+        let pixel = document.createElement("div");
+        pixel.classList.add("pixel");
+        pixel.id = "pixel-" + i;
 
-.pixel {
-    width: 30px;
-    height: 30px;
-    background-color: #ddd;
-    border: 1px solid #bbb;
-    cursor: pointer;
-}
+        pixel.addEventListener("click", function () {
+            let color = prompt("Enter a hex color code for your ad (e.g., #ff0000):", "#ff0000");
+            if (color) {
+                pixel.style.backgroundColor = color;
+            }
+        });
 
-.pixel:hover {
-    background-color: #ccc;
-}
+        grid.appendChild(pixel);
+    }
+});
